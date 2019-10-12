@@ -1,4 +1,4 @@
-import hello from "@/hello-world"
+import hello from "./hello-world"
 
 test('hello-world', () => {
     const elm = document.createElement("div");
