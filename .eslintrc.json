@@ -14,5 +14,7 @@
     "parserOptions": {
       "sourceType": "module"
     },
-    "rules": {}
+    "rules": {
+      
+    }
   }
