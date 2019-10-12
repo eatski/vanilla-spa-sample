@@ -1,3 +1,3 @@
-export default (elm:HTMLElement) => {
-    elm.innerText = "HelloWorld"
-}
+export default (elm: HTMLElement): void => {
+  elm.innerText = "HelloWorld";
+};
