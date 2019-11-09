@@ -1,8 +1,10 @@
+const base = require("./webpack.base.config");
+const merge = require("webpack-merge");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const file = (...args) => path.resolve(__dirname, ...args);
 
-module.exports = {
+const config =  {
   mode: "development",
   entry: {
     main: ["@babel/polyfill", file("src", "index.ts")]
@@ -10,28 +12,6 @@ module.exports = {
   output: {
     path: file("dist"),
     filename: "index.js"
-  },
-  module: {
-    rules: [
-      {
-        test: [/\.js$/, /\.ts$/],
-        exclude: /node_modules/,
-        loader: "babel-loader"
-      },
-      {
-        test: [/\.ts$/],
-        exclude: /node_modules/,
-        loader: "ts-loader"
-      }
-    ]
-  },
-
-  resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx"],
-    modules: ["node_modules"],
-    alias: {
-      "@": file("src")
-    }
   },
   devServer: {
     port: 3000,
@@ -45,3 +25,5 @@ module.exports = {
     })
   ]
 };
+
+module.exports = merge(base,config);
