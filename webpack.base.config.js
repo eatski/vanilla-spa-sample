@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
-const file = (...args) => path.resolve(__dirname, ...args);
 
 module.exports = {
   module: {
@@ -20,7 +20,7 @@ module.exports = {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
     modules: ["node_modules"],
     alias: {
-      "@": file("src")
+      "@": path.resolve(__dirname, "src")
     }
   }
 };
