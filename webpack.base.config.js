@@ -7,20 +7,20 @@ module.exports = {
       {
         test: [/\.js$/, /\.ts$/],
         exclude: /node_modules/,
-        loader: "babel-loader"
+        loader: "babel-loader",
       },
       {
         test: [/\.ts$/],
         exclude: /node_modules/,
-        loader: "ts-loader"
-      }
-    ]
+        loader: "ts-loader",
+      },
+    ],
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
     modules: ["node_modules"],
     alias: {
-      "@": path.resolve(__dirname, "src")
-    }
-  }
+      "@": path.resolve(__dirname, "src"),
+    },
+  },
 };
