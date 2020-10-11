@@ -4,14 +4,16 @@ const { merge } = require("webpack-merge");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+/** @type import('webpack').Configuration */
 const config = {
   mode: "development",
+  devtool: false,
   entry: {
     main: path.resolve(__dirname, "src", "index.ts"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "index.js",
+    filename: "[name].[contenthash].js",
   },
   devServer: {
     port: 3000,
