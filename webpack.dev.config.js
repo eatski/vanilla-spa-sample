@@ -2,18 +2,20 @@
 const base = require("./webpack.base.config");
 const { merge } = require("webpack-merge");
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 /** @type import('webpack').Configuration */
 const config = {
   mode: "development",
   devtool: false,
-  entry: {
-    main: path.resolve(__dirname, "src", "index.ts"),
-  },
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "[name].[contenthash].js",
+  cache: {
+    type: "filesystem",
+    buildDependencies: {
+      config: [
+        __filename,
+        path.resolve(__dirname, ".babelrc"),
+        path.resolve(__dirname, "webpack.base.config.js"),
+      ],
+    },
   },
   devServer: {
     port: 3000,
@@ -21,12 +23,6 @@ const config = {
     historyApiFallback: true,
     open: false,
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "src", "index.html"),
-      filename: "index.html",
-    }),
-  ],
 };
 
 module.exports = merge(base, config);
